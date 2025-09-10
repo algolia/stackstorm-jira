@@ -11,7 +11,8 @@ class SearchJiraIssuesAction(BaseJiraAction):
             include_comments=False, include_attachments=False,
             include_customfields=False, include_components=False,
             include_subtasks=False):
-        issues = self._client.enhanced_search_issues(query, startAt=start_at, maxResults=max_results)
+        _ = start_at  # Not supported by enhanced_search_issues
+        issues = self._client.enhanced_search_issues(query, maxResults=max_results)
         results = []
 
         for issue in issues:
