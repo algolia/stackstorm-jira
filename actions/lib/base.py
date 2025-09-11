@@ -20,7 +20,7 @@ class BaseJiraAction(Action):
     def _get_client(self):
         config = self.config
 
-        options = {'server': config['url'], 'verify': config['verify'], "rest_api_version": "3"}
+        options = {'server': config['url'], 'verify': config['verify']}
 
         auth_method = config['auth_method']
 
