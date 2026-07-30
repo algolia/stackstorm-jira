@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.2.1-algolia.5
+- Add issue type and status category metadata to Jira issue output, and issue type metadata to
+  linked issue output.
+
 ## 3.2.1
 - Fixed the deafult attribute invocation for jira field ``description`` to verify that the attribute exists first. If ``description`` attribute does not exist then return ``null``.
 
