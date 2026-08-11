@@ -6,7 +6,7 @@ keywords:
   - issues
   - ticket management
   - project management
-version: 3.3.0-algolia.1
+version: 3.3.0-algolia.2
 python_versions:
   - "3"
 author: StackStorm, Inc.
