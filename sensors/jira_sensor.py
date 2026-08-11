@@ -91,9 +91,10 @@ class JIRASensor(PollingSensor):
             raise Exception('Invalid project (%s) to track.' % self._project)
 
         self._jql_query = 'project={} ORDER BY id DESC'.format(self._project)
-        latest_issue = self._jira_client.search_issues(self._jql_query, maxResults=1)
+        latest_issue = next(iter(self._jira_client.search_issues(
+            self._jql_query, maxResults=1)), None)
         if latest_issue:
-            self._latest_id = int(latest_issue[0].id)
+            self._latest_id = int(latest_issue.id)
         self._update_jql(self._latest_id)
 
     def poll(self):
@@ -119,7 +120,7 @@ class JIRASensor(PollingSensor):
 
     def _detect_new_issues(self):
         new_issues = self._jira_client.search_issues(self._jql_query, maxResults=50, startAt=0)
-        for issue in new_issues:
+        for issue in iter(new_issues):
             self._latest_id = int(issue.id)
             self._dispatch_issues_trigger(issue)
         self._update_jql(self._latest_id)
