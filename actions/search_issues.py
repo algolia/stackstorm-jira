@@ -15,7 +15,7 @@ class SearchJiraIssuesAction(BaseJiraAction):
                                             maxResults=max_results)
         results = []
 
-        for issue in issues:
+        for issue in iter(issues):
             results.append(to_issue_dict(issue=issue,
                                         include_comments=include_comments,
                                         include_attachments=include_attachments,
