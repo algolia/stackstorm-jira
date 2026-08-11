@@ -1,8 +1,17 @@
 # Change Log
 
-## 3.2.1-algolia.5
+## 3.3.0-algolia.1
 - Add issue type and status category metadata to Jira issue output, and issue type metadata to
   linked issue output.
+
+# 3.3.0
+- Added new ``search_users`` action. Addresses [#90](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/90)
+
+## 3.2.3
+- Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) JIRA sensor failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
+
+## 3.2.2
+- Addresses [#87](https://github.com/StackStorm-Exchange/stackstorm-jira/issues/87) search failure due to [deprecation of /v2/search endpoint](https://developer.atlassian.com/changelog/#CHANGE-2046)
 
 ## 3.2.1
 - Fixed the deafult attribute invocation for jira field ``description`` to verify that the attribute exists first. If ``description`` attribute does not exist then return ``null``.
