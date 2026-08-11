@@ -18,7 +18,8 @@ jobs:
       enable-common-libs: true
       #apt-cache-version: v0
       #py-cache-version: v0
-      python-version: '["3.10", "3.11", "3.12"]'
+      python-version: '["3.10", "3.11"]'
+      st2-branch: 15e45d07d1b3a2b5330ef07a47dc258e2d56ded0 # v3.9.0
 
   tag_release:
     needs: build_and_test
