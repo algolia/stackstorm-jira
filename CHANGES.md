@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.3.0-algolia.2
+- Add an idempotent ``jira.flag_issue`` action for the Jira Flagged field.
+
 ## 3.3.0-algolia.1
 - Add issue type and status category metadata to Jira issue output, and issue type metadata to
   linked issue output.
