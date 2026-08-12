@@ -68,6 +68,7 @@ class RunTestCase(JIRABaseActionTestCase):
 def test_transition_issue_by_status_single_match_on_transition_executed() -> None:
     action = ActionManager.__new__(ActionManager)
     action._client = mock.Mock()
+    action._client.issue.return_value.fields.status.name = 'To Do'
     action._client.transitions.return_value = [
         {'id': '11', 'name': 'Start Progress', 'to': {'name': 'In Progress'}},
         {'id': '21', 'name': 'Close', 'to': {'name': 'Done'}},
@@ -86,9 +87,27 @@ def test_transition_issue_by_status_single_match_on_transition_executed() -> Non
     )
 
 
+def test_transition_issue_by_status_target_status_on_noop_success() -> None:
+    action = ActionManager.__new__(ActionManager)
+    action._client = mock.Mock()
+    action._client.issue.return_value.fields.status.name = 'Done'
+
+    result = action.run(
+        action='transition_issue_by_status',
+        issue='IAAS-3035',
+        status='Done',
+    )
+
+    assert result == (True, None)
+    action._client.issue.assert_called_once_with('IAAS-3035', fields='status')
+    action._client.transitions.assert_not_called()
+    action._client.transition_issue.assert_not_called()
+
+
 def test_transition_issue_by_status_no_match_on_explicit_failure() -> None:
     action = ActionManager.__new__(ActionManager)
     action._client = mock.Mock()
+    action._client.issue.return_value.fields.status.name = 'To Do'
     action._client.transitions.return_value = []
 
     result = action.run(
@@ -104,6 +123,7 @@ def test_transition_issue_by_status_no_match_on_explicit_failure() -> None:
 def test_transition_issue_by_status_multiple_matches_on_explicit_failure() -> None:
     action = ActionManager.__new__(ActionManager)
     action._client = mock.Mock()
+    action._client.issue.return_value.fields.status.name = 'To Do'
     action._client.transitions.return_value = [
         {'id': '11', 'name': 'Resolve', 'to': {'name': 'Done'}},
         {'id': '21', 'name': 'Close', 'to': {'name': 'Done'}},

@@ -16,6 +16,9 @@ class ActionManager(BaseJiraAction):
                 del kwargs['transition_name']
             elif action == 'transition_issue_by_status':
                 status = kwargs.pop('status')
+                issue = self._client.issue(kwargs['issue'], fields='status')
+                if issue.fields.status.name == status:
+                    return (True, None)
                 transitions = [
                     transition for transition in self._client.transitions(kwargs['issue'])
                     if transition.get('to', {}).get('name') == status
