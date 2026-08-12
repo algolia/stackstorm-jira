@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.3.0-algolia.3
+- Add ``jira.transition_issue_by_status`` to transition an issue by its target status.
+
 ## 3.3.0-algolia.2
 - Add an idempotent ``jira.flag_issue`` action for the Jira Flagged field.
 
