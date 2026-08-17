@@ -122,6 +122,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``bulk_link_issue`` - Link many JIRA issues to another JIRA issue.
 * ``comment_issue`` - Comment on a JIRA issue / ticket.
 * ``create_issue`` - Create a new JIRA issue / ticket.
+* ``flag_issue`` - Add the Jira Flagged value to an issue.
 * ``get_issue`` - Retrieve information about a particular JIRA issue.
 * ``get_issue_attachments`` - Retrieve attachments for a particular JIRA issue.
 * ``get_issue_comments`` - Retrieve comments for a particular JIRA issue.
@@ -130,6 +131,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``search_issues`` - Search JIRA issues with a JQL query.
 * ``transition_issue`` - Do a transition on a JIRA issue / ticket.
 * ``transition_issue_by_name`` - Do a transition on a JIRA issue / ticket.
+* ``transition_issue_by_status`` - Idempotently transition a Jira issue to a target status.
 * ``update_field_value`` - Update a field in a particular JIRA issue.
 * ``add_gadget`` - Add a gadget to an existing JIRA dashboard.
 * ``copy_dashboard`` - Copy an existing JIRA dashboard

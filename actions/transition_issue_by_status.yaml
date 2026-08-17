@@ -1,0 +1,19 @@
+---
+name: transition_issue_by_status
+runner_type: python-script
+description: Transition a Jira issue to a target status.
+enabled: true
+entry_point: run.py
+parameters:
+  action:
+    default: transition_issue_by_status
+    immutable: true
+    type: string
+  issue:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true
+  status:
+    type: string
+    description: Target status name (e.g. In Progress, Done).
+    required: true
