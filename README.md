@@ -131,7 +131,8 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``search_issues`` - Search JIRA issues with a JQL query.
 * ``transition_issue`` - Do a transition on a JIRA issue / ticket.
 * ``transition_issue_by_name`` - Do a transition on a JIRA issue / ticket.
-* ``transition_issue_by_status`` - Idempotently transition a Jira issue to a target status.
+* ``transition_issue_by_status`` - Idempotently transition a Jira issue to a target status, using a
+  uniquely same-named transition to resolve duplicate target statuses.
 * ``update_field_value`` - Update a field in a particular JIRA issue.
 * ``add_gadget`` - Add a gadget to an existing JIRA dashboard.
 * ``copy_dashboard`` - Copy an existing JIRA dashboard

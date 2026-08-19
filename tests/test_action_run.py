@@ -120,6 +120,28 @@ def test_transition_issue_by_status_no_match_on_explicit_failure() -> None:
     action._client.transition_issue.assert_not_called()
 
 
+def test_transition_issue_by_status_exact_name_on_transition_executed() -> None:
+    action = ActionManager.__new__(ActionManager)
+    action._client = mock.Mock()
+    action._client.issue.return_value.fields.status.name = 'To Do'
+    action._client.transitions.return_value = [
+        {'id': '11', 'name': 'Done', 'to': {'name': 'Done'}},
+        {'id': '21', 'name': 'Complete', 'to': {'name': 'Done'}},
+    ]
+
+    result = action.run(
+        action='transition_issue_by_status',
+        issue='IAAS-3035',
+        status='Done',
+    )
+
+    assert result == (True, action._client.transition_issue.return_value)
+    action._client.transition_issue.assert_called_once_with(
+        issue='IAAS-3035',
+        transition='11',
+    )
+
+
 def test_transition_issue_by_status_multiple_matches_on_explicit_failure() -> None:
     action = ActionManager.__new__(ActionManager)
     action._client = mock.Mock()
