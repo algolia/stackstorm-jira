@@ -23,6 +23,13 @@ class ActionManager(BaseJiraAction):
                     transition for transition in self._client.transitions(kwargs['issue'])
                     if transition.get('to', {}).get('name') == status
                 ]
+                if len(transitions) > 1:
+                    exact_name_transitions = [
+                        transition for transition in transitions
+                        if transition.get('name') == status
+                    ]
+                    if len(exact_name_transitions) == 1:
+                        transitions = exact_name_transitions
                 if len(transitions) != 1:
                     return (
                         False,
