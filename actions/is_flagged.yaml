@@ -1,0 +1,11 @@
+---
+name: is_flagged
+runner_type: python-script
+description: Check whether an issue has the Jira Flagged value.
+enabled: true
+entry_point: is_flagged.py
+parameters:
+  issue_key:
+    type: string
+    description: Issue key (e.g. PROJECT-1000).
+    required: true

@@ -127,6 +127,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``get_issue_attachments`` - Retrieve attachments for a particular JIRA issue.
 * ``get_issue_comments`` - Retrieve comments for a particular JIRA issue.
 * ``get_issue_links`` - Retrieve linked issues for a particular JIRA issue.
+* ``is_flagged`` - Check whether an issue has the Jira Flagged value.
 * ``link_issue`` - Link one JIRA issue to another JIRA issue.
 * ``search_issues`` - Search JIRA issues with a JQL query.
 * ``transition_issue`` - Do a transition on a JIRA issue / ticket.
