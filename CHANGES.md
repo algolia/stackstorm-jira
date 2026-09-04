@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.3.0-algolia.6
+- Allow ``jira.flag_issue`` to unassign a matching assignee after flagging.
+
 ## 3.3.0-algolia.5
 - Resolve the Jira Flagged field dynamically and add ``jira.is_flagged``.
 
