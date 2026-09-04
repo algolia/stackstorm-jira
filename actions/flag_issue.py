@@ -23,10 +23,8 @@ class FlagIssue(BaseJiraAction):
             issue.update(fields={flag_field: [{"value": "Impediment"}]})
 
         assignee = issue_fields.get("assignee") or {}
-        if (
-            unassign_if_assignee is not None
-            and assignee.get("displayName") == unassign_if_assignee
-        ):
-            self._client.assign_issue(issue_key, None)
+        if unassign_if_assignee is not None:
+            if assignee.get("displayName") == unassign_if_assignee:
+                self._client.assign_issue(issue_key, None)
 
         return {"issue_key": issue_key, "flag_added": flag_added}
