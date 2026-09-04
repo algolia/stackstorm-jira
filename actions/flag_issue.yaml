@@ -1,7 +1,7 @@
 ---
 name: flag_issue
 runner_type: python-script
-description: Add the Jira Flagged value to an issue if it is not already present.
+description: Add the Jira Flagged value and optionally unassign a matching assignee.
 enabled: true
 entry_point: flag_issue.py
 parameters:
@@ -9,3 +9,6 @@ parameters:
     type: string
     description: Issue key (e.g. PROJECT-1000).
     required: true
+  unassign_if_assignee:
+    type: string
+    description: Unassign the issue when its current assignee has this display name.
