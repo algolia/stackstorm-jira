@@ -122,7 +122,7 @@ The sensor monitors for new tickets and sends a trigger into the system whenever
 * ``bulk_link_issue`` - Link many JIRA issues to another JIRA issue.
 * ``comment_issue`` - Comment on a JIRA issue / ticket.
 * ``create_issue`` - Create a new JIRA issue / ticket.
-* ``flag_issue`` - Add the Jira Flagged value to an issue.
+* ``flag_issue`` - Add the Jira Flagged value and optionally unassign a matching assignee.
 * ``get_issue`` - Retrieve information about a particular JIRA issue.
 * ``get_issue_attachments`` - Retrieve attachments for a particular JIRA issue.
 * ``get_issue_comments`` - Retrieve comments for a particular JIRA issue.
