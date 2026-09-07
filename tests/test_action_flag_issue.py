@@ -71,7 +71,11 @@ def test_run_unflagged_issue_on_flag_added() -> None:
     )
     jira.assign_issue.assert_not_called()
     jira.issue.assert_called_once_with("IAAS-123", fields="customfield_10038")
-    assert result == {"issue_key": "IAAS-123", "flag_added": True}
+    assert result == {
+        "issue_key": "IAAS-123",
+        "flag_added": True,
+        "unassigned": False,
+    }
 
 
 def test_run_flagged_issue_on_already_present() -> None:
@@ -94,7 +98,11 @@ def test_run_flagged_issue_on_already_present() -> None:
 
     issue.update.assert_not_called()
     jira.assign_issue.assert_not_called()
-    assert result == {"issue_key": "IAAS-123", "flag_added": False}
+    assert result == {
+        "issue_key": "IAAS-123",
+        "flag_added": False,
+        "unassigned": False,
+    }
 
 
 def test_run_unflagged_issue_matching_assignee_on_flagged_then_unassigned(
@@ -122,7 +130,11 @@ def test_run_unflagged_issue_matching_assignee_on_flagged_then_unassigned(
     jira.issue.assert_called_once_with(
         "IAAS-123", fields="customfield_10038,assignee"
     )
-    assert result == {"issue_key": "IAAS-123", "flag_added": True}
+    assert result == {
+        "issue_key": "IAAS-123",
+        "flag_added": True,
+        "unassigned": True,
+    }
 
 
 def test_run_unflagged_issue_flag_failure_on_assignee_left_unchanged(
@@ -169,7 +181,11 @@ def test_run_flagged_issue_matching_assignee_on_unassigned() -> None:
 
     issue.update.assert_not_called()
     jira.assign_issue.assert_called_once_with("IAAS-123", None)
-    assert result == {"issue_key": "IAAS-123", "flag_added": False}
+    assert result == {
+        "issue_key": "IAAS-123",
+        "flag_added": False,
+        "unassigned": True,
+    }
 
 
 @pytest.mark.parametrize("assignee", [None, {"displayName": "operator"}])
@@ -196,4 +212,8 @@ def test_run_unflagged_issue_other_assignee_on_flagged_only(
         fields={"customfield_10038": [{"value": "Impediment"}]}
     )
     jira.assign_issue.assert_not_called()
-    assert result == {"issue_key": "IAAS-123", "flag_added": True}
+    assert result == {
+        "issue_key": "IAAS-123",
+        "flag_added": True,
+        "unassigned": False,
+    }
