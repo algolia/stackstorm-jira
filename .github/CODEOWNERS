@@ -8,4 +8,4 @@
 
 # This is base configuration. These owners could review the
 # whole file in this repository.
-* @StackStorm-Exchange/tsc @floatingstatic
+* @algolia/iaas
