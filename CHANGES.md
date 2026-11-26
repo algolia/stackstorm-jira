@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.3.0-algolia.7
+- Upgrade PyJWT to 2.15.1 to address security vulnerabilities.
+
 ## 3.3.0-algolia.6
 - Allow ``jira.flag_issue`` to unassign a matching assignee after flagging and report whether it did.
 
